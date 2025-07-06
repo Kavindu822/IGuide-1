@@ -1,10 +1,19 @@
 .navbar {
-  width: 100%;
   background-color: #640259;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", sans-serif;
   color: white;
-  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
   position: relative;
-  z-index: 10;
+}
+
+.active a {
+  color: #ead6ff;
+  font-weight: bold;
+  border-bottom: 2px solid white;
 }
 
 .leftSection {
@@ -15,8 +24,12 @@
 }
 
 .logo .image {
-  height: 40px;
+  background-color: white;
+  border-radius: 6px;
+  height: 60px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: auto;
+  display: flex;
   object-fit: contain;
 }
 

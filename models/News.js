@@ -8,7 +8,16 @@ const NewsSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
+      required: false, // optional
+      trim: true,
+    },
+    youtubeLink: {
+      type: String,
+      default: "",
+    },
+    image: {
+      type: String,
+      default: "",
     },
   },
   { timestamps: true }

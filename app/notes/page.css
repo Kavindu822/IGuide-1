@@ -1,13 +1,14 @@
 :root {
   --primary: #640259;
-  --accent: #C43EC3;
+  --accent: #c43ec3;
   --text-on-dark: #ffffff;
   --bg-light: #f9f9f9;
   --card-bg: #ffffff;
 }
 
 /* Reset and Global */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -169,7 +170,8 @@ html, body {
   color: #fff;
 }
 
-.preview, .download {
+.preview,
+.download {
   display: flex;
   align-items: center;
 }
@@ -245,77 +247,88 @@ button[type="submit"]:hover {
   color: white;
 }
 
-/* Hamburger button container - visible only on small screens */
+/* Hamburger wrapper - Always at top left */
 .hamburger-wrapper {
-  display: none; /* hidden on desktop */
+  display: none;
   position: fixed;
-  top: 1%rem;
+  top: 6rem;
   left: 1rem;
   z-index: 2000;
-    margin: 0.5rem 1rem; /* add margin to position below navbar */
 }
 
-/* Hamburger icon style */
 .hamburger-icon {
   cursor: pointer;
-  color: var(--primary);
-  background: var(--bg-light);
+  color: #fff;
+  background: var(--primary);
   border-radius: 0.5rem;
-  padding: 0.25rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Small screens: show hamburger, hide sidebar by default */
+/* Mobile sidebar style */
 @media (max-width: 767px) {
   .hamburger-wrapper {
     display: block;
   }
 
-  /* Hide sidebar off-canvas by default */
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    transform: translateX(-100%);
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
-    border-right: none;
-    padding-top: 3rem;
+    position: absolute;
+    top: 9rem; /* ⬅️ Now sidebar appears lower */
+    left: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 280px;
+    height: auto;
     background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1999;
   }
 
-  /* Show sidebar when visible class is added */
   .sidebar.visible {
-    transform: translateX(0);
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  /* Show close button inside sidebar on mobile */
-  .sidebar.visible .close-btn {
+  .close-btn {
     display: block;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+    color: var(--primary);
+    text-align: right;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
-  /* Main area full width on mobile */
   .main-area {
     padding: 1rem;
   }
 }
 
-/* Larger screens - sidebar always visible */
+/* Desktop */
 @media (min-width: 768px) {
   .hamburger-wrapper {
     display: none;
   }
-  
+
   .sidebar {
     position: sticky;
+    top: 0;
+    left: 0;
     transform: none !important;
     height: 100vh;
     box-shadow: none;
     border-right: 1px solid #eee;
     padding-top: 2rem;
+    z-index: 1000;
   }
 }

@@ -1,12 +1,12 @@
 :root {
   --primary: #640259;
-  --accent: #C43EC3;
+  --accent: #c43ec3;
   --text-on-dark: #ffffff;
   --bg-light: #f9f9f9;
   --card-bg: #ffffff;
 }
 
-/* Global Reset & Font */
+/* Reset and Global */
 html,
 body {
   height: 100%;
@@ -34,30 +34,13 @@ body {
   gap: 0.5rem;
   position: sticky;
   top: 0;
+  height: 100vh;
+  overflow-y: auto;
   transition: transform 0.3s ease;
   z-index: 1500;
 }
 
-/* Sidebar hidden off canvas on small screens */
-@media (max-width: 767px) {
-  .sidebar {
-    position: fixed;
-    top: 64px; /* adjust if your navbar height differs */
-    left: 0;
-    height: calc(100vh - 64px);
-    transform: translateX(-100%);
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
-    border-right: none;
-    padding-top: 3rem;
-    background-color: white;
-  }
-  /* Show sidebar when visible */
-  .sidebar.visible {
-    transform: translateX(0);
-  }
-}
-
-/* Close button inside sidebar for mobile */
+/* Close button inside sidebar */
 .close-btn {
   display: none;
   background: none;
@@ -68,12 +51,6 @@ body {
   cursor: pointer;
   color: var(--primary);
   text-align: left;
-  margin-bottom: 1rem;
-}
-@media (max-width: 767px) {
-  .sidebar.visible .close-btn {
-    display: block;
-  }
 }
 
 /* Sidebar items */
@@ -116,31 +93,6 @@ body {
   flex: 1;
   padding: 2rem;
   background-color: var(--bg-light);
-}
-
-/* Search Box */
-.search-box {
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.search-box input {
-  width: 100%;
-  max-width: 300px;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  border: 2px solid var(--accent);
-  border-radius: 0.6rem;
-  background-color: #fff;
-  color: var(--primary);
-  transition: 0.3s;
-}
-
-.search-box input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(196, 62, 195, 0.3);
 }
 
 /* Cards Grid */
@@ -229,7 +181,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-30deg);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--accent);
   opacity: 0.15;
@@ -295,24 +247,88 @@ button[type="submit"]:hover {
   color: white;
 }
 
-/* Hamburger Wrapper - only show on mobile */
+/* Hamburger wrapper - Always at top left */
 .hamburger-wrapper {
   display: none;
   position: fixed;
-  top:1%rem; /* or adjust to fit your navbar */
+  top: 6rem;
   left: 1rem;
   z-index: 2000;
-  background: var(--bg-light);
-  border-radius: 0.5rem;
-  padding: 0.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
 }
 
+.hamburger-icon {
+  cursor: pointer;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile sidebar style */
 @media (max-width: 767px) {
   .hamburger-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 9rem; /* ⬅️ Now sidebar appears lower */
+    left: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 280px;
+    height: auto;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1999;
+  }
+
+  .sidebar.visible {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .close-btn {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+    color: var(--primary);
+    text-align: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .main-area {
+    padding: 1rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .hamburger-wrapper {
+    display: none;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    transform: none !important;
+    height: 100vh;
+    box-shadow: none;
+    border-right: 1px solid #eee;
+    padding-top: 2rem;
+    z-index: 1000;
   }
 }

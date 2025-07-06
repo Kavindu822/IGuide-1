@@ -1,6 +1,6 @@
 :root {
   --primary: #640259;
-  --accent: #C43EC3;
+  --accent: #c43ec3;
   --text-on-dark: #ffffff;
   --bg-light: #f9f9f9;
   --card-bg: #ffffff;
@@ -194,7 +194,8 @@ body {
   color: #fff;
 }
 
-.preview, .download {
+.preview,
+.download {
   display: flex;
   align-items: center;
 }
@@ -270,58 +271,69 @@ button[type="submit"]:hover {
   color: white;
 }
 /* Hamburger wrapper */
+/* Hamburger wrapper - Always at top left */
 .hamburger-wrapper {
   display: none;
   position: fixed;
-  top: 1rem;
+  top: 6rem;
   left: 1rem;
   z-index: 2000;
-  background: var(--bg-light);
-  border-radius: 0.5rem;
-  padding: 0.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
 }
 
-/* Mobile display rules */
+.hamburger-icon {
+  cursor: pointer;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile sidebar style */
 @media (max-width: 767px) {
   .hamburger-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
   }
 
   .sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 220px;
-    height: 100vh;
-    transform: translateX(0);
-    transition: left 0.3s ease;
-    z-index: 1500;
-    background: white;
-    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    position: absolute;
+    top: 9rem; /* ⬅️ Now sidebar appears lower */
+    left: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 280px;
+    height: auto;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    transform: scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1999;
   }
 
   .sidebar.visible {
-    left: 0;
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .close-btn {
     display: block;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+    color: var(--primary);
+    text-align: right;
     background: none;
     border: none;
-    color: var(--primary);
-    font-size: 1.5rem;
-    padding: 1rem;
-    text-align: right;
     cursor: pointer;
-    width: 100%;
   }
-}
 
-/* Hide close on desktop */
-.close-btn {
-  display: none;
+  .main-area {
+    padding: 1rem;
+  }
 }

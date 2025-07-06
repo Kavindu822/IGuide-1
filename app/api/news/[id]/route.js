@@ -22,7 +22,9 @@ export async function PUT(req, { params }) {
   await connect();
   try {
     const data = await req.json();
-    const updatedNews = await News.findByIdAndUpdate(params.id, data, { new: true });
+    const updatedNews = await News.findByIdAndUpdate(params.id, data, {
+      new: true,
+    });
     if (!updatedNews) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
@@ -41,7 +43,10 @@ export async function DELETE(_, { params }) {
     if (!deleted) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
-    return NextResponse.json({ message: "Deleted successfully" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Deleted successfully" },
+      { status: 200 }
+    );
   } catch (err) {
     console.error("DELETE error:", err);
     return NextResponse.json({ error: "Delete failed" }, { status: 500 });
