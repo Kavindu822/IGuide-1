@@ -89,6 +89,7 @@ const ManageAccess = () => {
   const pendingUsers = users.filter((u) => !u.isApproved);
 
   return (
+    
     <div className={styles.container}>
       <h2 className={styles.title}>Manage User Access</h2>
 

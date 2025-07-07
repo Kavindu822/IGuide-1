@@ -78,9 +78,10 @@ const SignupForm = () => {
 
   return (
     <div className={styles['signup-page-container']}>
-      <h2>Sign Up</h2>
       <section className={styles['signup-form-section']}>
         <form onSubmit={handleSubmit}>
+<h2 style={{ marginBottom: "1.5rem" }}>Signup</h2>
+
           <Input
             label="Name"
             type="text"

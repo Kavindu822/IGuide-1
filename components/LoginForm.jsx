@@ -81,8 +81,10 @@ const LoginForm = () => {
 
   return (
     <div className={styles["note-page-container"]}>
-      <h2>Login</h2>
       <section>
+<h2 style={{ marginBottom: "1.5rem" }}>Login</h2>
+        <br/>
+
         <form onSubmit={handleSubmit}>
           <Input
             label="Email"

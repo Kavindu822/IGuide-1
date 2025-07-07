@@ -1,113 +1,95 @@
-:root {
-  --primary: #640259;
-  --accent: #C43EC3;
-  --text-on-dark: #ffffff;
-  --bg-light: #f9f9f9;
-  --card-bg: #ffffff;
+.container {
+  padding: 1rem;
+  background-color: #91548d;
+  min-height: 100vh;
 }
 
-/* Container for the form */
-.container {
-  max-width: 600px;
+.formSection {
+  max-width: 500px;
   margin: 2rem auto;
-  padding: 2rem 2.5rem;
-  background-color: var(--card-bg);
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  text-align: center;
+  color: #640259;
+  margin-bottom: 1.5rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
   display: flex;
   flex-direction: column;
 }
 
-/* Heading */
-.container h2 {
-  color: var(--primary);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+.label {
+  font-weight: bold;
+  color: #640259;
+  margin-top: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input,
+.fileInput {
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus,
+.fileInput:focus {
+  border-color: #640259;
+  outline: none;
+  box-shadow: 0 0 6px rgba(100, 2, 89, 0.4);
+}
+
+.message {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error {
+  color: #d00000;
+  font-weight: 600;
   text-align: center;
 }
 
-.special-word {
-  color: var(--primary);
-}
-
-/* Form */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Label */
-label {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+.success {
+  color: #1ba94c;
   font-weight: 600;
-  color: var(--primary);
+  text-align: center;
 }
 
-/* Inputs */
-input[type="text"],
-input[type="file"] {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1.8px solid #ddd;
-  border-radius: 0.6rem;
-  background-color: #fff;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="file"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 6px rgba(196, 62, 195, 0.4);
-}
-
-/* Preview images */
-img {
-  max-width: 200px;
-  margin-top: 10px;
-  border-radius: 0.75rem;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Error and success messages */
-.text-red-600 {
-  color: #dc3545;
-  margin-top: 0.75rem;
-  font-weight: 600;
-}
-
-.text-green-600 {
-  color: #28a745;
-  margin-top: 0.75rem;
-  font-weight: 600;
-}
-
-/* Button */
-.btn {
+.button {
   margin-top: 1.5rem;
   padding: 0.75rem;
-  background-color: var(--primary);
-  color: white;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 0.7rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  background-color: #640259;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
-.btn:disabled {
+.button:hover:not(:disabled) {
+  background-color: #4a0143;
+}
+
+.button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.btn:hover:not(:disabled) {
-  background-color: #4a0143;
-  transform: translateY(-2px);
 }
